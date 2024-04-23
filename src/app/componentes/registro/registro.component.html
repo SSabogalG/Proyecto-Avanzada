@@ -1,23 +1,28 @@
-<form>
+
+<form #f="ngForm" (ngSubmit)="registrar()" >
     <div>
         <label>Nombre: </label>
-        <input type="text" name="nombre" />
+        <input type="text" name="nombre" [(ngModel)]="registroUsuarioDTO.nombre" placeholder="Ingresa tu Nombre">
     </div>
     <div>
-        <label>Email: </label>
-        <input type="text" name="email" />
-    </div>
-    <div>
-        <label>Dirección: </label>
-        <input type="text" name="direccion" />
-    </div>
-    <div>
-        <label>Teléfono: </label>
-        <input type="text" name="telefono" />
+        <label>Correo: </label>
+        <input type="email" name="email" [(ngModel)]="registroUsuarioDTO.correo"  placeholder="Ingresa tu Correo"/>
     </div>
     <div>
         <label>Contraseña: </label>
-        <input type="password" name="password" />
+        <input type="password" name="contrasenia" [(ngModel)]="registroUsuarioDTO.contrasenia"  placeholder="Ingresa tu Contraseña"/>
     </div>
-    <button type="submit">Registrarse</button>
+    <div>
+        <label>Foto de Perfil: </label>
+        <input type="file" name="imagen" (change)="onFileChange($event)" required/>
+    </div>
+    <div>
+        <label>nickname: </label>
+        <input type="text" name="nickname"  [(ngModel)]="registroUsuarioDTO.nickname"  placeholder="Ingresa tu Nickname"/> 
+    </div>
+    <div>
+        <label>Ciudad: </label>
+        <input type="text" name="ciudad"  [(ngModel)]="registroUsuarioDTO.ciudadResidencia"  placeholder="Ingresa tu Ciudad"/> 
+    </div>
+    <button type="submit" [disabled]="f.invalid">Registrate</button>
 </form>

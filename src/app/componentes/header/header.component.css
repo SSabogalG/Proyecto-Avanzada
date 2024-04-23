@@ -1,0 +1,9 @@
+.bg-custom-blue {
+    background-color: #3F5AF5;
+}
+
+.highlight-link:hover {
+    color: black; /* Cambia el color del texto a blanco cuando el cursor pasa sobre el enlace */
+    background-color: #007bff; /* Cambia el color de fondo a azul cuando el cursor pasa sobre el enlace */
+    transition: all 0.3s; /* Agrega una transición suave */
+}
