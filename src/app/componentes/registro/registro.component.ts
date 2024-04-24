@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './registro.component.css'
 })
 export class RegistroComponent {
+  registroExitosos:boolean = false;
   archivos!: FileList;
   registroUsuarioDTO!: RegistroUsuarioDTO;
 
@@ -25,6 +26,7 @@ export class RegistroComponent {
     } else {
       console.log("Debe de cargar una foto")
     }
+    this.registroExitosos = true;
   }
 
   public onFileChange(event: any) {

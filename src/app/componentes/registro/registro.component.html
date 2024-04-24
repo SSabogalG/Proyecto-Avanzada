@@ -25,4 +25,7 @@
         <input type="text" name="ciudad"  [(ngModel)]="registroUsuarioDTO.ciudadResidencia"  placeholder="Ingresa tu Ciudad"/> 
     </div>
     <button type="submit" [disabled]="f.invalid">Registrate</button>
+    <div *ngIf="registroExitosos " class = "alert alert-success">
+        ¡Bienvenido! a la familia Unilocal
+    </div>
 </form>

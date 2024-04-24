@@ -1,0 +1,35 @@
+<form #f="ngForm" (ngSubmit)="registrarNegocio()" >
+    <div>
+        <label>Nombre: </label>
+        <input type="text" name="nombre" [(ngModel)]="registroNegocioDTO.nombre" placeholder="Ingresa tu Nombre">
+    </div>
+    <div>
+        <label>Descripcion: </label>
+        <input type="text" name="descripcion" [(ngModel)]="registroNegocioDTO.descripcion" placeholder="Ingresa la descripción">
+    </div>
+    <div>
+        <label>Imagenes: </label>
+        <input type="file" name="imagenes" (change)="onFileChange($event)" required/>
+    </div>
+    <div>
+        <label>Telefonos: </label>
+        <input type="text" name="telefono" [(ngModel)]="registroNegocioDTO.listaTelefonos" placeholder="Ingresa tus Telefonos">
+    </div>
+    <div>
+        <label>Ubicacion: </label>
+        <input type="text" name="ubicacion" [(ngModel)]="registroNegocioDTO.ubicacion">
+    </div>
+    <div>
+        <label>horarioNegocio: </label>
+        <input type="text" name="horarioNegocio" [(ngModel)]="registroNegocioDTO.horarioNegocio" placeholder="Ingresa tu horarios">
+    </div>
+    <div>
+        <label>Tipo Negocio: </label>
+        <input type="text" name="TipoNegocio" [(ngModel)]="registroNegocioDTO.tipoNegocio" placeholder="Ingresa el tipo de tu negocio">
+    </div>
+    <div>
+        <label>Ciudad: </label>
+        <input type="text" name="ciudad" [(ngModel)]="registroNegocioDTO.ciudad" placeholder="Ingresa tu ciudad">
+    </div>
+    <button type="submit" [disabled]="f.invalid">Registra tu negocio</button>
+</form>
