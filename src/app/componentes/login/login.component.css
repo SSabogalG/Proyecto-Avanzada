@@ -1,0 +1,44 @@
+/* Estilos para el formulario */
+form {
+    width: 300px;
+    margin: 0 auto;
+}
+
+/* Estilos para los campos de entrada */
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    box-sizing: border-box; /* Asegura que el padding no incremente el ancho del input */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Estilos para la etiqueta */
+label {
+    display: block; /* Hace que cada etiqueta esté en una línea separada */
+    margin-bottom: 5px;
+}
+
+/* Estilos para el botón */
+button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #007bff; /* Cambia el color de fondo del botón */
+    color: #fff; /* Cambia el color del texto del botón a blanco */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Estilos para el botón al pasar el cursor sobre él */
+button[type="submit"]:hover {
+    background-color: #0056b3; /* Cambia el color de fondo al pasar el cursor sobre el botón */
+}
+div .prueba {
+    border: 1px solid #ccc; /* Color y grosor del borde */
+    padding: 20px; /* Espacio interno alrededor del contenido */
+}
+

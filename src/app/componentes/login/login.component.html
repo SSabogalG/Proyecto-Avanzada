@@ -1,1 +1,15 @@
-<p>login works!</p>
+<div class = 'prueba'>
+<form #f="ngForm" (ngSubmit)="onSubmit">
+    <div>
+        <label>Correo electronico : </label>
+        <input type="text" name="nombre" [(ngModel)]="InicioSesionDTO.correo" placeholder="Ingresa tu Correo">
+    </div>
+    <div>
+        <label>Contraseña: </label>
+        <input type="password" name="contraseña" [(ngModel)]="InicioSesionDTO.contrasenia"
+            placeholder="Ingresee tu contraseña" />
+    </div>
+
+    <button type="submit">Registrate</button>
+</form>
+</div>
