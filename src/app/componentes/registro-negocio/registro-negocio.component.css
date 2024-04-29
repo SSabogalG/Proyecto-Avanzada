@@ -43,5 +43,9 @@ button:disabled {
     background-color: #cccccc;
     cursor: not-allowed;
 }
+#mapa{
+    height: 100px;
+    width: 100px;
+}
 
 /* Estilo para el campo de entrada con errores */

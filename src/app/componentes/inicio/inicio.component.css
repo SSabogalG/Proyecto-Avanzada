@@ -1,4 +1,4 @@
-.mapa-container {
-    width: 800px; /* o cualquier otro valor */
-    height: 600px; /* o cualquier otro valor */
+#mapa {
+    width: 100%;
+    height: 500px;
 }

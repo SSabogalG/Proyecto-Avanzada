@@ -28,8 +28,8 @@ export class RegistroNegocioComponent {
 
   public onFileChange(event: any) {
     if (event.target.files.length > 0) {
-      this.archivos = event.target.files;
-      this.registroNegocioDTO.listaimagenes = Array.from(this.archivos).map(file=> file.name).join(',');
+      this.archivos = event.target.files; 
+      Array.from(this.archivos).map(file=> this.registroNegocioDTO.listaimagenes.push(file.name));
     }
   }
 }

@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { MapaComponent } from "../mapa/mapa.component";
+import { Component, OnInit } from '@angular/core';
+import { MapaService } from '../../servicios/mapa.service';
 
 
 @Component({
@@ -7,8 +7,14 @@ import { MapaComponent } from "../mapa/mapa.component";
     standalone: true,
     templateUrl: './inicio.component.html',
     styleUrl: './inicio.component.css',
-    imports: [MapaComponent]
+    imports: []
 })
-export class InicioComponent {
+export class InicioComponent implements OnInit {
+
+    constructor(private mapaServcice: MapaService){}
+    
+    ngOnInit(): void {
+        this.mapaServcice.crearMapa();
+    }
 
 }

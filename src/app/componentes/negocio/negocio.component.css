@@ -3,14 +3,14 @@
     --text: #2c2c2c;
 }
 
-.negocios{
+.negocios {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     grid-auto-rows: minmax(200px, auto);
     gap: 1.5rem;
 }
 
-.negocios article{
+.negocios article {
     cursor: pointer;
     position: relative;
     overflow: hidden;
@@ -19,22 +19,23 @@
 }
 
 .negocios article h2 {
-    margin: 0 0 0.5rem 0 ;
+    margin: 0 0 0.5rem 0;
     font-size: 1.6 rem;
     color: var(--text);
     transition: color 0.3s ease-out;
 }
+
 .negocios article img {
     width: 100%;
-  height: 100%;
-  object-fit: cover;
+    height: 100%;
+    object-fit: cover;
 }
 
 .negocios article:hover img {
     transform: scale(1.1);
 }
 
-.negocio.preview{
+.negocio.preview {
     padding: 1.5rem;
     background: white;
 }
@@ -44,4 +45,3 @@
     height: 14rem;
     overflow: hidden;
 }
-

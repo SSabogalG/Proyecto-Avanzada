@@ -1,23 +1,21 @@
-<header class="p-3 text-white bg-custom-blue">
-    <div class="container">
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            
-
-            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                <li class="nav-item text-center">
-                    <a href="#" class="nav-link px-2 text-white highlight-link">Home</a>
-                </li>
-            </ul>
-
-            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-                <input type="search" class="form-control form-control-dark text-bg-ligth" placeholder="Buscar"
-                    aria-label="Search">
-            </form>
-
-            <div class="text-end">
-                <button type="button" class="btn btn-outline-light me-2" routerLink = "login">Iniciar Sesion</button>
-                <button type="button" class="btn btn-warning" routerLink="registro">Registrate</button>
-            </div>
+<div class="container">
+    <header class="d-flex flex-wrap align-items-center justify-content-center
+    justify-content-md-between py-3">
+        <div class="col-md-3 mb-2 mb-md-0">
+            <a routerLink="" class="d-inline-flex link-body-emphasis text-decoration-none">
+                <i class="fa-solid fa-map-location-dot fs-3"></i>
+                <span class="fs-4 ms-3 me-3">Unilocal</span>
+            </a>
         </div>
-    </div>
-</header>
+        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+            <li><a routerLink="" class="nav-link px-2 link-secondary">Inicio</a></li>
+            <li><a routerLink="" class="nav-link px-2">Gestión negocios</a></li>
+            <li><a routerLink="" class="nav-link px-2">Favoritos</a></li>
+        </ul>
+        <div class="col-md-3 text-end">
+            <button type="button" routerLink="/login" class="btn btn-outline-primary
+    me-2">Login</button>
+            <button type="button" routerLink="/registro" class="btn btn-primary">Registro</button>
+        </div>
+    </header>
+</div>
