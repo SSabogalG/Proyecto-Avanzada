@@ -35,7 +35,7 @@ export class RegistroNegocioComponent implements OnInit {
   public onFileChange(event: any) {
     if (event.target.files.length > 0) {
       this.archivos = event.target.files;
-      Array.from(this.archivos).map(file => this.registroNegocioDTO.listaimagenes.push(file.name));
+      Array.from(this.archivos).map(file => this.registroNegocioDTO.imagenes.push(file.name));
     }
   }
 }

@@ -13,23 +13,23 @@
     </div>
     <div>
         <label>Telefonos: </label>
-        <input type="text" name="telefono" [(ngModel)]="registroNegocioDTO.listaTelefonos" placeholder="Ingresa tus Telefonos">
+        <input type="text" name="telefono" [(ngModel)]="registroNegocioDTO.telefonos" placeholder="Ingresa tus Telefonos">
     </div>
-    <div>
+    <!--<div>
         <label>Ubicacion: </label>
         <input type="text" name="ubicacion" [(ngModel)]="registroNegocioDTO.ubicacion">
-    </div>
-    <div>
+    </div>-->
+   <!-- <div>
         <label>horarioNegocio: </label>
         <input type="text" name="horarioNegocio" [(ngModel)]="registroNegocioDTO.horarioNegocio" placeholder="Ingresa tu horarios">
-    </div>
+    </div>-->
     <div>
         <label>Tipo Negocio: </label>
         <input type="text" name="TipoNegocio" [(ngModel)]="registroNegocioDTO.tipoNegocio" placeholder="Ingresa el tipo de tu negocio">
     </div>
-    <div>
+    <!--<div>
         <label>Ciudad: </label>
         <input type="text" name="ciudad" [(ngModel)]="registroNegocioDTO.ciudad" placeholder="Ingresa tu ciudad">
-    </div>
+    </div>-->
     <button type="submit" [disabled]="f.invalid">Registra tu negocio</button>
 </form>

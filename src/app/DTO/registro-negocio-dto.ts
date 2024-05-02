@@ -1,12 +1,12 @@
 export class RegistroNegocioDTO {
-    constructor(
-        public nombre:string ="",
-        public descripcion:string = "",
-        public listaimagenes:string[] = [],
-        public listaTelefonos:string = "",
-        public ubicacion:string = "",
-        public horarioNegocio:string ="",
-        public tipoNegocio:string = "",
-        public ciudad:string = ""
-    ){}
+        constructor(
+        public nombre: string = '',
+        public descripcion: string = '',
+        public codigoCliente: string = '',
+        //public ubicacion: Ubicacion = new Ubicacion(),
+        public imagenes: string[] = [],
+        public tipoNegocio: string = '',
+       // public horarios: Horario[] = [],
+        public telefonos: string[] = []
+        ) { }
 }
