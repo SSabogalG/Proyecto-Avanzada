@@ -44,8 +44,12 @@ button:disabled {
     cursor: not-allowed;
 }
 #mapa{
-    height: 100px;
-    width: px;
+    height: 400px;
+    width: 400px;
 }
 
+.custom-header {
+    background-color: #0275f8; /* Cambiar el color de fondo a rojo */
+    /*color: #ffffff;  Cambiar el color del texto a blanco */
+}
 /* Estilo para el campo de entrada con errores */

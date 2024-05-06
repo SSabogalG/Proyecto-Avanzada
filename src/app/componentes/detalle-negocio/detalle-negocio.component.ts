@@ -18,6 +18,7 @@ export class DetalleNegocioComponent {
   negocio: ItemNegocioDTO | undefined;
   
   constructor(private route: ActivatedRoute, private negociosService: NegociosService) {
+    
     this.route.params.subscribe((params) => {
       this.codigoNegocio = params['codigo'];
       this.obtenerNegocio();

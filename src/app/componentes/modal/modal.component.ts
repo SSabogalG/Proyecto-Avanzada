@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-modal',
@@ -9,4 +9,22 @@ import { Component } from '@angular/core';
 })
 export class ModalComponent {
 
+  @Input() visible: boolean;
+  @Input() titulo: string ;
+  @Input() contenido: string ;
+
+
+  constructor() {
+    this.visible = false;
+    this.titulo = '';
+    this.contenido= '';
+  }
+
+  mostrar() {
+    this.visible = true;
+  }
+
+  cerrar() {
+    this.visible = false;
+  }
 }
