@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { RegistroUsuarioDTO } from '../../DTO/registro-usuario-dto';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../servicios/auth.service';
 
 @Component({
   selector: 'app-registro',
@@ -12,21 +13,30 @@ import { CommonModule } from '@angular/common';
   styleUrl: './registro.component.css'
 })
 export class RegistroComponent {
-  registroExitosos:boolean = false;
+  ciudades: string[];
+  registroExitosos: boolean = false;
   archivos!: FileList;
   registroUsuarioDTO!: RegistroUsuarioDTO;
 
-  constructor() {
+  constructor(private authService: AuthService) {
     this.registroUsuarioDTO = new RegistroUsuarioDTO();
+    this.ciudades = [];
+    this.cargarCiudades();
   }
 
   public registrar() {
-    if (this.registroUsuarioDTO.urlFotoPerfil != "") {
-      console.log(this.registroUsuarioDTO);
+    if (this.registroUsuarioDTO.ciudadResidencia != "") {
+      this.authService.registrarUsuario(this.registroUsuarioDTO).subscribe({
+        next: (data) => {
+          console.log("Cliente registrado");
+        },
+        error: (error) => {
+          console.log("Error al registrar el cliente");
+        }
+      });
     } else {
-      console.log("Debe de cargar una foto")
+      console.log("Debe cargar una foto");
     }
-    this.registroExitosos = true;
   }
 
   public onFileChange(event: any) {
@@ -34,6 +44,9 @@ export class RegistroComponent {
       this.archivos = event.target.files;
       this.registroUsuarioDTO.urlFotoPerfil = this.archivos[0].name;
     }
+  }
+  private cargarCiudades() {
+    this.ciudades = ["Bogota", "Medellin", "Cali"];
   }
 }
 

@@ -3,6 +3,7 @@ import { ItemNegocioDTO } from '../DTO/item-negocio-dto';
 import { RegistroNegocioDTO } from '../DTO/registro-negocio-dto';
 import { Ubicacion } from '../DTO/ubicacion';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -46,4 +47,8 @@ export class NegociosService {
     this.negocios = this.negocios.filter(n => n.codigoNegocio !== codigo);
   }
 
+ buscar ( palabraClave: string): ItemNegocioDTO[]{
+  const palabraClaveLowerCase = palabraClave.toLowerCase();
+  return this.negocios.filter(negocio => negocio.nombre.toLowerCase().includes(palabraClaveLowerCase));
+ }
 }

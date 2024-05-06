@@ -7,6 +7,7 @@ import { NegocioComponent } from './componentes/negocio/negocio.component';
 import { GestionNegociosComponent } from './componentes/gestion-negocios/gestion-negocios.component';
 import { ModalComponent } from './componentes/modal/modal.component';
 import { DetalleNegocioComponent } from './componentes/detalle-negocio/detalle-negocio.component';
+import { BusquedaComponent } from './componentes/busqueda/busqueda.component';
 
 
 
@@ -20,5 +21,6 @@ export const routes: Routes = [
     {path: 'gestion-negocios', component:GestionNegociosComponent},
     {path: 'modales', component:ModalComponent},
     {path: 'detalle-negocio/:codigo', component: DetalleNegocioComponent},
+    {path: 'busqueda/:texto', component: BusquedaComponent},
     {path: '', pathMatch: "full", redirectTo: ""}
 ];

@@ -24,6 +24,7 @@ export class RegistroNegocioComponent implements OnInit {
     this.registroNegocioDTO = new RegistroNegocioDTO();
     this.horarios = [ new Horario() ];
     }
+    
   ngOnInit(): void {
     this.mapaService.crearMapa();
 

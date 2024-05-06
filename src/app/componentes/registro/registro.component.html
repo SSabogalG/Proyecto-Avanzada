@@ -22,8 +22,12 @@
     </div>
     <div>
         <label>Ciudad: </label>
-        <input type="text" name="ciudad"  [(ngModel)]="registroUsuarioDTO.ciudadResidencia"  placeholder="Ingresa tu Ciudad"/> 
+        <select name ="ciudadResidencia" required [(ngModel)]="registroUsuarioDTO.ciudadResidencia" >
+            <option value = "" selected >Seleccione una ciudad</option>
+            @for (item of ciudades; track $index){ <option [value] ="item">{{item}}</option>}
+        </select>
     </div>
+
     <button type="submit" [disabled]="f.invalid">Registrate</button>
     <div *ngIf="registroExitosos " class = "alert alert-success">
         ¡Bienvenido! a la familia Unilocal
