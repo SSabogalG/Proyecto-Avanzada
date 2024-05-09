@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { MapaService } from '../../servicios/mapa.service';
 import { NegociosService } from '../../servicios/negocios.service';
 import { Horario } from '../../DTO/horario';
+import { PublicoService } from '../../servicios/publico.service';
 
 @Component({
   selector: 'app-registro-negocio',
@@ -15,14 +16,18 @@ import { Horario } from '../../DTO/horario';
 })
 
 export class RegistroNegocioComponent implements OnInit {
+
   archivos!: FileList;
   registroNegocioDTO: RegistroNegocioDTO;
   horarios: Horario[];
   registroNegocioExitoso:boolean = false;
+  tipoNegocio: string[];
 
-  constructor(private negociosService: NegociosService, private mapaService : MapaService) {
+  constructor(private negociosService: NegociosService, private mapaService : MapaService, private publicoService: PublicoService) {
     this.registroNegocioDTO = new RegistroNegocioDTO();
     this.horarios = [ new Horario() ];
+    this.tipoNegocio = [];
+    this.cargarCategorias();
     }
     
   ngOnInit(): void {
@@ -60,5 +65,15 @@ export class RegistroNegocioComponent implements OnInit {
       this.archivos = event.target.files;
       Array.from(this.archivos).map(file => this.registroNegocioDTO.imagenes.push(file.name));
     }
+  }
+  private cargarCategorias (){
+    this.publicoService.listarTiposNegocio().subscribe({
+      next:(data)=>{
+        this.tipoNegocio = data.respuesta;
+      },
+      error: (error) => {
+        console.log ("error al cargar las categorias");
+      }
+    });
   }
 }

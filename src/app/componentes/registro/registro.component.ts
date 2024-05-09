@@ -4,6 +4,7 @@ import { RouterLink } from '@angular/router';
 import { RegistroUsuarioDTO } from '../../DTO/registro-usuario-dto';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../servicios/auth.service';
+import { PublicoService } from '../../servicios/publico.service';
 
 @Component({
   selector: 'app-registro',
@@ -18,24 +19,24 @@ export class RegistroComponent {
   archivos!: FileList;
   registroUsuarioDTO!: RegistroUsuarioDTO;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService,  private publicoService: PublicoService) {
     this.registroUsuarioDTO = new RegistroUsuarioDTO();
     this.ciudades = [];
     this.cargarCiudades();
   }
 
   public registrar() {
-    if (this.registroUsuarioDTO.ciudadResidencia != "") {
+    if(this.registroUsuarioDTO.urlFotoPerfil != ""){
       this.authService.registrarUsuario(this.registroUsuarioDTO).subscribe({
-        next: (data) => {
+        next: (data) =>{
           console.log("Cliente registrado");
         },
         error: (error) => {
-          console.log("Error al registrar el cliente");
+          console.log(error.error.respuesta);
         }
       });
     } else {
-      console.log("Debe cargar una foto");
+      console.log ("Debe cargar una foto")
     }
   }
 
@@ -46,7 +47,14 @@ export class RegistroComponent {
     }
   }
   private cargarCiudades() {
-    this.ciudades = ["Bogota", "Medellin", "Cali"];
+    this.publicoService.listarCiudades().subscribe({
+      next:(data) => {
+        this.ciudades=data.respuesta;
+      },
+      error: (error) => {
+        console.log("error al cargar las ciudades");
+      }
+    });
   }
 }
 

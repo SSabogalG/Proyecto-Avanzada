@@ -8,6 +8,7 @@ import { GestionNegociosComponent } from './componentes/gestion-negocios/gestion
 import { ModalComponent } from './componentes/modal/modal.component';
 import { DetalleNegocioComponent } from './componentes/detalle-negocio/detalle-negocio.component';
 import { BusquedaComponent } from './componentes/busqueda/busqueda.component';
+import { CategoriasComponent } from './componentes/categorias/categorias.component';
 
 
 
@@ -22,5 +23,6 @@ export const routes: Routes = [
     {path: 'modales', component:ModalComponent},
     {path: 'detalle-negocio/:codigo', component: DetalleNegocioComponent},
     {path: 'busqueda/:texto', component: BusquedaComponent},
+    {path: "categorias", component:CategoriasComponent},
     {path: '', pathMatch: "full", redirectTo: ""}
 ];
