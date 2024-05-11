@@ -1,5 +1,5 @@
 
-<form #f="ngForm" (ngSubmit)="registrar()" >
+<form>
     <div>
         <label>Nombre: </label>
         <input type="text" name="nombre" [(ngModel)]="registroUsuarioDTO.nombre" placeholder="Ingresa tu Nombre">
@@ -16,6 +16,12 @@
         <label>Foto de Perfil: </label>
         <input type="file" name="imagen" (change)="onFileChange($event)" required/>
     </div>
+    <div class = "col-sm-2">
+        <button type="submit" [disabled]="archivos==null" class="btn btn-primary"
+        (click)="subirImagen()">
+        <i class="fa-solid fa-cloud-arrow-up me-2"></i> Subir foto    
+    </button>
+    </div>
     <div>
         <label>nickname: </label>
         <input type="text" name="nickname"  [(ngModel)]="registroUsuarioDTO.nickname"  placeholder="Ingresa tu Nickname"/> 
@@ -28,8 +34,6 @@
         </select>
     </div>
 
-    <button type="submit" [disabled]="f.invalid">Registrate</button>
-    <div *ngIf="registroExitosos " class = "alert alert-success">
-        ¡Bienvenido! a la familia Unilocal
-    </div>
+    <button (click)="registrar()">Registrate</button>
+    <app-alerta [alerta]="alerta"></app-alerta>
 </form>

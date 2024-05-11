@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { RegistroUsuarioDTO } from '../DTO/registro-usuario-dto';
 import { MensajeDTO } from '../DTO/mensaje-dto';
+import { LoginDTO } from '../DTO/login-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -14,5 +15,9 @@ export class AuthService {
 
   public registrarUsuario (usuario:RegistroUsuarioDTO): Observable<MensajeDTO>{
     return this.http.post<MensajeDTO>(`${this.authURL}/registrar-usuario`, usuario);
+  }
+
+  public loginUsuario (loginDTO:LoginDTO): Observable<MensajeDTO>{
+    return this.http.post<MensajeDTO> (`${this.authURL}/login-usuario`, loginDTO);
   }
 }
