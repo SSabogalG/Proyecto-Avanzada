@@ -20,7 +20,7 @@ export class BusquedaComponent implements OnInit{
     this.textoBusqueda = "";
     this.route.params.subscribe(params => {
     this.textoBusqueda = params['texto'];
-    this.resultados = this.negociosService.buscar(this.textoBusqueda);
+    //this.resultados = this.negociosService.buscar(this.textoBusqueda);
     });
     }
 

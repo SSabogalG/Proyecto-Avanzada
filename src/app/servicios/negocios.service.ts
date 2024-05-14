@@ -14,7 +14,7 @@ import { ActualizarNegocioDTO } from '../DTO/actualizar-negocio-dto';
 
 export class NegociosService {
 
-  private negociosURL = "";
+  private negociosURL = "http://localhost:8181/api/negocio";
 
   constructor(private http: HttpClient) { }
 

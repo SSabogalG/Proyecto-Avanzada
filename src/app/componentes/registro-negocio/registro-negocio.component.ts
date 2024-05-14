@@ -6,6 +6,7 @@ import { MapaService } from '../../servicios/mapa.service';
 import { NegociosService } from '../../servicios/negocios.service';
 import { Horario } from '../../DTO/horario';
 import { PublicoService } from '../../servicios/publico.service';
+import { Alerta } from '../../DTO/alerta';
 
 @Component({
   selector: 'app-registro-negocio',
@@ -20,43 +21,47 @@ export class RegistroNegocioComponent implements OnInit {
   archivos!: FileList;
   registroNegocioDTO: RegistroNegocioDTO;
   horarios: Horario[];
-  registroNegocioExitoso:boolean = false;
+  registroNegocioExitoso: boolean = false;
   tipoNegocio: string[];
+  alerta!: Alerta;
 
-  constructor(private negociosService: NegociosService, private mapaService : MapaService, private publicoService: PublicoService) {
+  constructor(private negociosService: NegociosService, private mapaService: MapaService, private publicoService: PublicoService) {
     this.registroNegocioDTO = new RegistroNegocioDTO();
-    this.horarios = [ new Horario() ];
+    this.horarios = [new Horario()];
     this.tipoNegocio = [];
     this.cargarCategorias();
-    }
-    
+  }
+
   ngOnInit(): void {
     this.mapaService.crearMapa();
 
     this.mapaService.agregarMarcador().subscribe((marcador: { lat: number | undefined; lng: number | undefined; }) => {
       this.registroNegocioDTO.ubicacion.latitud = marcador.lat;
-      this.registroNegocioDTO.ubicacion.longitud =marcador.lng;
+      this.registroNegocioDTO.ubicacion.longitud = marcador.lng;
     });
   }
 
 
   public registrarNegocio() {
     if (this.archivos && this.archivos.length > 0) {
-      console.log("Archivos selecionados:", this.archivos, this.registroNegocioDTO);
-      this.registroNegocioDTO.horarios = this.horarios;
-      
-      this.negociosService.crear(this.registroNegocioDTO);
+      this.negociosService.crear(this.registroNegocioDTO).subscribe({
+        next: (data) => {
+          this.alerta = new Alerta(data.respuesta, "succes");
+        },
+        error: (error) => {
+          this.alerta = new Alerta(error.error.respuesta, "Danger")
+        }
+      });
     } else {
-      console.log("Debe cargar al menos una foto.")
+      this.alerta = new Alerta("Debe de subir al menos una imagen", "danger")
     }
-    this.registroNegocioExitoso = true;
   }
 
-  public agregarHorario (){
-    this.horarios.push (new Horario());
+  public agregarHorario() {
+    this.horarios.push(new Horario());
   }
 
-  public agregarTelefono(){
+  public agregarTelefono() {
     this.registroNegocioDTO.telefonos.push();
   }
 
@@ -66,13 +71,13 @@ export class RegistroNegocioComponent implements OnInit {
       Array.from(this.archivos).map(file => this.registroNegocioDTO.imagenes.push(file.name));
     }
   }
-  private cargarCategorias (){
+  private cargarCategorias() {
     this.publicoService.listarTiposNegocio().subscribe({
-      next:(data)=>{
+      next: (data) => {
         this.tipoNegocio = data.respuesta;
       },
       error: (error) => {
-        console.log ("error al cargar las categorias");
+        console.log("error al cargar las categorias");
       }
     });
   }

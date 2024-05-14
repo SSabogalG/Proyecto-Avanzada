@@ -9,7 +9,7 @@ import { ImagenDTO } from '../DTO/imagen-dto';
 })
 export class ImagenService {
 
-  private imgURL = "";
+  private imgURL = "http://localhost:8181/api/imagenes";
 
   constructor(private http:HttpClient) { }
 

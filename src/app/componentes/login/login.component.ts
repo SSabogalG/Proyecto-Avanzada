@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
-import { InicioSesionDTO } from '../../DTO/inicio-sesion-dto';
+import { CommonModule } from '@angular/common'; // Importar CommonModule
 import { AuthService } from '../../servicios/auth.service';
 import { TokenService } from '../../servicios/token.service';
 import { Alerta } from '../../DTO/alerta';
@@ -11,37 +11,26 @@ import { LoginDTO } from '../../DTO/login-dto';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, RouterOutlet,AlertaComponent],
+  imports: [CommonModule, FormsModule, RouterOutlet, AlertaComponent],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrls: ['./login.component.css'] // Usa styleUrls en plural
 })
 export class LoginComponent {
-
-  InicioSesionDTO!: InicioSesionDTO;
-  loginDTO!: LoginDTO;
+  loginDTO!: LoginDTO; 
   alerta!: Alerta;
 
-  username: string = '';
-  password: string = '';
-
-  constructor(private authService:AuthService, private tokenService:TokenService){
-    this.InicioSesionDTO = new InicioSesionDTO();
+  constructor(private authService: AuthService, private tokenService: TokenService) {
+    this.loginDTO = new LoginDTO();
   }
 
-  onSubmit() {
-    
-    console.log('Username:', this.username);
-    console.log('Password:', this.password);
-  }
-
-  public login(){
+  public login(): void {
     this.authService.loginUsuario(this.loginDTO).subscribe({
-      next:data => {
+      next: data => {
         this.tokenService.login(data.respuesta.token);
       },
       error: error => {
-        this.alerta = new Alerta (error.error.respuesta, "danger")
+        this.alerta = new Alerta(error.error.respuesta, "Este es el error");
       }
-    })
+    });
   }
 }

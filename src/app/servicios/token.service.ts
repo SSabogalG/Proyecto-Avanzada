@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import {Buffer} from "buffer";
+import { Buffer } from 'buffer';
 
 const TOKEN_KEY = "AuthToken";
 
@@ -8,45 +8,82 @@ const TOKEN_KEY = "AuthToken";
   providedIn: 'root'
 })
 export class TokenService {
-
   constructor(private router: Router) { }
-  public setToken(token: string) {
-    window.sessionStorage.removeItem(TOKEN_KEY);
-    window.sessionStorage.setItem(TOKEN_KEY, token);
+
+  public setToken(token: string): void {
+    if (this.isBrowser()) {
+      window.sessionStorage.removeItem(TOKEN_KEY);
+      window.sessionStorage.setItem(TOKEN_KEY, token);
+    }
   }
+
   public getToken(): string | null {
-    return sessionStorage.getItem(TOKEN_KEY);
+    if (this.isBrowser()) {
+      return sessionStorage.getItem(TOKEN_KEY);
+    }
+    return null;
   }
 
   public isLogged(): boolean {
-    if (this.getToken()) {
-      return true;
-    }
-    return false;
+    return !!this.getToken();
   }
 
-  public login(token: string) {
+  public login(token: string): void {
     this.setToken(token);
-    this.router.navigate(["/"]);
+    this.router.navigate(["/"]).then(() => {
+      window.location.reload();
+    });
   }
-  public logout() {
-    window.sessionStorage.clear();
-    this.router.navigate(["/login"]);
+
+  public logout(): void {
+    if (this.isBrowser()) {
+      window.sessionStorage.clear();
+    }
+    this.router.navigate(["/login"]).then(() => {
+      window.location.reload();
+    });
   }
 
   private decodePayload(token: string): any {
-    const payload = token!.split(".")[1];
-    const payloadDecoded = Buffer.from(payload, 'base64').toString('ascii');
-    const values = JSON.parse(payloadDecoded);
-    return values;
+    try {
+      const payload = token.split(".")[1];
+      const payloadDecoded = Buffer.from(payload, 'base64').toString('ascii');
+      return JSON.parse(payloadDecoded);
+    } catch (e) {
+      console.error("Error decoding token payload", e);
+      return null;
     }
+  }
 
   public getCodigo(): string {
     const token = this.getToken();
-    if(token){
+    if (token) {
       const values = this.decodePayload(token);
-      return values.id;
+      return values ? values.id : '';
     }
     return "";
   }
+
+  public getEmail(): string {
+    const token = this.getToken();
+    if (token) {
+      const values = this.decodePayload(token);
+      return values ? values.sub : '';
+    }
+    return "";
+  }
+
+  public getRole(): string {
+    const token = this.getToken();
+    if (token) {
+      const values = this.decodePayload(token);
+      return values ? values.rol : '';
+    }
+    return "";
+  }
+
+  private isBrowser(): boolean {
+    return typeof window !== 'undefined';
+  }
+
 }
