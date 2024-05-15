@@ -9,20 +9,27 @@
 
         <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
             <li><a routerLink="" class="nav-link px-2 link-secondary">Inicio</a></li>
-            <li *ngIf="islogged"><a routerLink="/gestion-negocios" class="nav-link px-2">Gestión negocios</a></li>
-            <li *ngIf="islogged"><a routerLink="/favoritos" class="nav-link px-2">Favoritos</a></li> 
-            <li *ngIf="islogged"><a routerLink="/registro-negocio" class="nav-link px-2">Registra tu negocio</a></li> 
+            @if( islogged ){
+                <li ><a routerLink="/gestion-negocios" class="nav-link px-2">Gestión negocios</a></li>
+                <li ><a routerLink="/favoritos" class="nav-link px-2">Favoritos</a></li> 
+                <li ><a routerLink="/registro-negocio" class="nav-link px-2">Registra tu negocio</a></li> 
+            }
         </ul>
 
         <div class="col-md-3 text-end">
-            <ng-container *ngIf="!islogged; else loggedIn">
-                <button type="button" routerLink="/login" class="btn btn-outline-primary me-2">Login</button>
-                <button type="button" routerLink="/registro" class="btn btn-primary">Registro</button>
-            </ng-container>
-            <ng-template #loggedIn>
-                <label class="me-3">Hola {{ email }}</label>
-                <button type="button" (click)="logout()" class="btn btn-primary">Logout</button>
-            </ng-template>
+            
+            @if( !islogged ){
+                <div>
+                    <button type="button" routerLink="/login" class="btn btn-outline-primary me-2">Login</button>
+                    <button type="button" routerLink="/registro" class="btn btn-primary">Registro</button>
+                </div>
+            }
+            @else {
+                <div>
+                    <label class="me-3">Hola {{ email }}</label>
+                    <button type="button" (click)="logout()" class="btn btn-primary">Logout</button>
+                </div>
+            }
         </div>
     </header>
 </div>

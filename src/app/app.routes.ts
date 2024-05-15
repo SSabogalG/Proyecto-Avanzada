@@ -20,9 +20,7 @@ export const routes: Routes = [
     {path: '', component: InicioComponent},
     {path: 'login', component: LoginComponent, canActivate: [LoginGuard]},
     {path: 'registro', component: RegistroComponent, canActivate:[LoginGuard]},
-    {path: 'registro-negocio', component: RegistroNegocioComponent , canActivate: [RolesGuard], data:{
-        expectedRole: ["CLIENTE"]
-    }},
+    {path: 'registro-negocio', component: RegistroNegocioComponent },
 
     {path: 'negocio', component: NegocioComponent},
 

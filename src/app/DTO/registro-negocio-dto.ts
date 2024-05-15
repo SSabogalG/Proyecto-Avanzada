@@ -5,11 +5,13 @@ export class RegistroNegocioDTO {
         constructor(
         public nombre: string = '',
         public descripcion: string = '',
-        public codigoCliente: string = '',
+        public idUsuario: string = '',
         public ubicacion: Ubicacion= new Ubicacion(),
-        public imagenes: string[] = [],
+        public listaImagenes: string[] = [],
         public tipoNegocio: string = '',
-        public horarios:Horario[] = [],
-        public telefonos:string[] = []
+        public horarioNegocio:Horario[] = [],
+        public listaTelefonos:string[] = [],
+        public ciudad: string = "",
+        public dirreccion: string = ""
         ) { }
 }

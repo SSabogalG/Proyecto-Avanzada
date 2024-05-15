@@ -33,4 +33,6 @@ export class NegociosService {
   public listarNegociosPropietario(idUsuario: string): Observable<MensajeDTO> {
     return this.http.get<MensajeDTO>(`${this.negociosURL}/listar-negocios-usuario/${idUsuario}`);
   }
+
+  
 }
