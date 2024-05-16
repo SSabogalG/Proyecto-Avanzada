@@ -58,6 +58,8 @@ export class RegistroNegocioComponent implements OnInit {
       const codigoCliente = this.tokenService.getCodigo();
       this.registroNegocioDTO.idUsuario = codigoCliente;
 
+      console.log(this.registroNegocioDTO);
+
       this.negociosService.crear(this.registroNegocioDTO).subscribe({
         next: (data) => {
           this.alerta = new Alerta(data.respuesta, "succes");
@@ -116,7 +118,7 @@ export class RegistroNegocioComponent implements OnInit {
 
       this.imagenService.subir(formData).subscribe({
         next:data => {
-          this.registroNegocioDTO.listaImagenes = data.respuesta.url;
+          this.registroNegocioDTO.listaImagenes.push( data.respuesta.url );
           this.alerta = new Alerta ("Se ha subido la foto", "succes");
         },
         error:error =>{
