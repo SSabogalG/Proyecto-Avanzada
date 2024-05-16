@@ -12,6 +12,6 @@ export class RegistroNegocioDTO {
         public horarioNegocio:Horario[] = [],
         public listaTelefonos:string[] = [],
         public ciudad: string = "",
-        public dirreccion: string = ""
+        public direccion: string = ""
         ) { }
 }

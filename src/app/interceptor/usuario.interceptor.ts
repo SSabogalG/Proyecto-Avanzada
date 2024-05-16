@@ -7,6 +7,7 @@ export const usuarioInterceptor: HttpInterceptorFn = (req, next) => {
   
   const isApiUrl = req.url.includes("api/auth");
   const urlListas = req.url.includes("api/publico");
+  
   if (!tokenService.isLogged() || isApiUrl || urlListas) {
     return next(req);
   }

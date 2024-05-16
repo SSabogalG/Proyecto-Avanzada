@@ -5,7 +5,9 @@ import { TokenService } from '../servicios/token.service';
 @Injectable({
   providedIn: 'root'
 })
+
 export class RolesService {
+  
   realRole: string = "";
   constructor(private tokenService: TokenService, private router: Router) { }
 

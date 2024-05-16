@@ -33,4 +33,16 @@ export class LoginComponent {
       }
     });
   }
+
+  public loginModerador(): void{
+    this.authService.loginModerador(this.loginDTO).subscribe({
+      next:data => {
+        this.tokenService.login(data.respuesta.token);
+      },
+      error:error => {
+        this.alerta = new Alerta(error.error.respuesta, "Error");
+      }
+    });
+
+  }
 }

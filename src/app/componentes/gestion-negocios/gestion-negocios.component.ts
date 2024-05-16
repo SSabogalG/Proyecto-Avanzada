@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ModalComponent } from '../modal/modal.component';
 import { TokenService } from '../../servicios/token.service';
+import { UsuarioService } from '../../servicios/usuario.service';
 
 @Component({
   selector: 'app-gestion-negocios',
@@ -22,7 +23,7 @@ export class GestionNegociosComponent {
   tituloModal: string = 'Título del modal';
   descripcionModal: string = 'Descripción del modal';
 
-  constructor(private negociosService: NegociosService, private tokenService: TokenService) {
+  constructor(private usuarioService: UsuarioService, private tokenService: TokenService) {
     this.negocios = [];
     this.listarNegocios();
     this.seleccionados = [];
@@ -32,9 +33,9 @@ export class GestionNegociosComponent {
 
   public listarNegocios() {
     
-    const codigoUsuario = this.tokenService.getCodigo();
+    const idUsuario = this.tokenService.getCodigo();
 
-    this.negociosService.listarNegociosPropietario(codigoUsuario).subscribe({
+    this.usuarioService.listarNegocio(idUsuario).subscribe({
       next:(data) => {
         this.negocios = data.respuesta;
       },
