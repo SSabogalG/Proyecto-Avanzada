@@ -37,12 +37,31 @@ export class BusquedaComponent implements OnInit{
   ngOnInit(): void {
     this.mapaService.crearMapa();
     this.mapaService.pintarMarcadores(this.resultados);
-    this.buscarPorCategoria();
+    this.listarCategoria();
   }
 
+  private listarCategoria(textoBusqueda? :string){
+
+    if(textoBusqueda){
+      this.publicoService.BuscarTipo(textoBusqueda).subscribe ({
+        next:(data) => {
+          this.resultados =data.respuesta;
+        },
+        error: (error) => {
+          console.error(error);
+        }
+      });
+    }
+  }
+    onSelectCategoria(categoria:string) {
+      this.categoriaSeleccionada = categoria;
+      this.listarCategoria(categoria);
+    }
     
     buscarPorCategoria(){
-      this.publicoService.listarTiposNegocio();
+      this.listarCategoria(this.categoriaSeleccionada)
     }
+
+
 
 }

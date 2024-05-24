@@ -35,7 +35,9 @@ export const routes: Routes = [
     {path: 'detalle-negocio/:codigo', component: DetalleNegocioComponent},
     {path: 'busqueda/:texto', component: BusquedaComponent},
     {path: "categorias", component:CategoriasComponent}, 
-    {path: "favoritos", component: FavoritosComponent}, //cliente 
+    {path: "favoritos", component: FavoritosComponent, canActivate: [RolesGuard], data:{
+        expectedRole: ["CLIENTE"]
+    }}, 
     {path: "recuperar-contraseña", component:RecuperarComponent},
     {path: "gestion-negocio-moderador", component: GestionModeradorComponent},
     {path: '', pathMatch: "full", redirectTo: ""}
