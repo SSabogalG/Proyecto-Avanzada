@@ -20,13 +20,17 @@ import { GestionModeradorComponent } from './componentes/gestion-moderador/gesti
 export const routes: Routes = [
 
     {path: '', component: InicioComponent},
-    {path: 'login', component: LoginComponent},
-    {path: 'registro', component: RegistroComponent},
-    {path: 'registro-negocio', component: RegistroNegocioComponent},
+    {path: 'login', component: LoginComponent,canActivate: [LoginGuard]},
+    {path: 'registro', component: RegistroComponent, canActivate:[LoginGuard]},
+    {path: 'registro-negocio', component: RegistroNegocioComponent,  canActivate: [RolesGuard], data:{
+        expectedRole: ["CLIENTE"]
+    }},
 
     {path: 'negocio', component: NegocioComponent},
 
-    {path: 'gestion-negocios', component:GestionNegociosComponent},
+    {path: 'gestion-negocios', component:GestionNegociosComponent, canActivate: [RolesGuard], data:{
+        expectedRole: ["CLIENTE"]
+    }},
     {path: 'modales', component:ModalComponent},
     {path: 'detalle-negocio/:codigo', component: DetalleNegocioComponent},
     {path: 'busqueda/:texto', component: BusquedaComponent},

@@ -71,7 +71,7 @@ export class RegistroComponent {
       this.imagenService.subir(formData).subscribe({
         next:data => {
           this.registroUsuarioDTO.urlFotoPerfil = data.respuesta.url;
-          this.alerta = new Alerta ("Se ha subidp la foto", "Success");
+          this.alerta = new Alerta ("Se ha subido la foto", "Success");
         },
         error:error => {
           this.alerta = new Alerta (error.error, "danger");

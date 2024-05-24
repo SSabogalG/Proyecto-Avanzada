@@ -5,6 +5,7 @@ import { NegociosService } from '../../servicios/negocios.service';
 import { MapaService } from '../../servicios/mapa.service';
 import { AuthService } from '../../servicios/auth.service';
 import { PublicoService } from '../../servicios/publico.service';
+import { MensajeDTO } from '../../DTO/mensaje-dto';
 
 @Component({
   selector: 'app-busqueda',
@@ -18,12 +19,14 @@ export class BusquedaComponent implements OnInit{
   textoBusqueda : string;
   resultados: ItemNegocioDTO[];
   categoriaSeleccionada : string;
+  nombre: ItemNegocioDTO [];
 
 
   constructor(private route: ActivatedRoute, private negociosService: NegociosService, private mapaService: MapaService ,private publicoService:PublicoService) {
     this.resultados = [];
     this.textoBusqueda = "";
     this.categoriaSeleccionada = "";
+    this.nombre = [];
     this.route.params.subscribe(params => {
     this.textoBusqueda = params['texto'];
     
@@ -34,28 +37,12 @@ export class BusquedaComponent implements OnInit{
   ngOnInit(): void {
     this.mapaService.crearMapa();
     this.mapaService.pintarMarcadores(this.resultados);
-    this.listarCategoria();
+    this.buscarPorCategoria();
   }
 
-  private listarCategoria(textoBusqueda? :string){
-
-    if(textoBusqueda){
-      this.publicoService.BuscarTipo(textoBusqueda).subscribe ({
-        next:(data) => {
-          this.resultados =data.respuesta;
-        },
-        error: (error) => {
-          console.error(error);
-        }
-      });
-    }
-  }
-    onSelectCategoria(categoria:string) {
-      this.categoriaSeleccionada = categoria;
-      this.listarCategoria(categoria);
-    }
     
     buscarPorCategoria(){
-      this.listarCategoria(this.categoriaSeleccionada)
+      this.publicoService.listarTiposNegocio();
     }
+
 }
