@@ -12,8 +12,8 @@ export class ModeradorServicesService {
 
   constructor(private http: HttpClient) { }
 
-   /* public aprobar(): Observable<MensajeDTO> {
-      return this.http.put<MensajeDTO>(`${this.publicoURL}/aprobar-negocio`);
+   /*public aprobar(revision:registroRevisionDTO): Observable<MensajeDTO> {
+      return this.http.put<MensajeDTO>(`${this.publicoURL}/aprobar-negocio`, revision);
     } */
 
 

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CambiarPasswordDTO } from '../../DTO/cambiar-password-dto';
+//import { CambiarPasswordDTO } from '../../DTO/Usuario/cambiar-password-dto';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
@@ -18,11 +18,11 @@ import { Alerta } from '../../DTO/alerta';
 
 
 export class RecuperarComponent {
-  cambiarPasswordDTO !: CambiarPasswordDTO;
+ // cambiarPasswordDTO !: CambiarPasswordDTO;
   alerta!: Alerta;
 
   constructor( private usuarioService: UsuarioService, private tokenService: TokenService){
-    this.cambiarPasswordDTO = new CambiarPasswordDTO();
+  //  this.cambiarPasswordDTO = new CambiarPasswordDTO();
 
   }
 
