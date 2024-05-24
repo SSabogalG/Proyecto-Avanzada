@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { RegistroUsuarioDTO } from '../DTO/registro-usuario-dto';
+import { RegistroUsuarioDTO } from '../DTO/Usuario/registro-usuario-dto';
 import { MensajeDTO } from '../DTO/mensaje-dto';
 import { LoginDTO } from '../DTO/login-dto';
 

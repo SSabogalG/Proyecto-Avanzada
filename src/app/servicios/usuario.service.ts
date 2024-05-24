@@ -10,13 +10,15 @@ export class UsuarioService {
 
   private usuarioURL = "http://localhost:8181/api/usuario";
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  public listarNegocio (idUsuario: string): Observable<MensajeDTO> {
-    return this.http.delete<MensajeDTO>(`${this.usuarioURL}/listar-negocios-usuario/${idUsuario}`);
+  public listarNegocio(idUsuario: string): Observable<MensajeDTO> {
+    return this.http.get<MensajeDTO>(`${this.usuarioURL}/listar-negocios-usuario/${idUsuario}`);
   }
 
-
+  public recuperarContrasenia(idUsuario: string): Observable<MensajeDTO> {
+    return this.http.put<MensajeDTO>(`${this.usuarioURL}/recuperar-contrasenia-usuario/${idUsuario}`, null);
+  }
 
 
 }

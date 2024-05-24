@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { MensajeDTO } from '../DTO/mensaje-dto';
 import { HttpClient } from '@angular/common/http';
-import { ItemNegocioDTO } from '../DTO/item-negocio-dto';
+import { ItemNegocioDTO } from '../DTO/Negocio/item-negocio-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -18,8 +18,8 @@ export class PublicoService {
   public listarTiposNegocio(): Observable<MensajeDTO> {
     return this.http.get<MensajeDTO>(`${this.publicoURL}/listar-tipo-de-negocios`);
   }
-  public BuscarTipo(): Observable<MensajeDTO> {
-    return this.http.get<MensajeDTO>(`${this.publicoURL}/buscar-negocios-tipo/{tipoNegocio}`);
+  public BuscarTipo(tipoNegocio:string): Observable<MensajeDTO> {
+    return this.http.get<MensajeDTO>(`${this.publicoURL}/buscar-negocios-tipo/${tipoNegocio}`);
   }
   
 }

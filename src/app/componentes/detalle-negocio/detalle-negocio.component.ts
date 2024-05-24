@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ItemNegocioDTO } from '../../DTO/item-negocio-dto';
+import { ItemNegocioDTO } from '../../DTO/Negocio/item-negocio-dto';
 import { ActivatedRoute } from '@angular/router';
 import { NegociosService } from '../../servicios/negocios.service';
 import { CommonModule } from '@angular/common';

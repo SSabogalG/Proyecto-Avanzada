@@ -11,11 +11,20 @@
             <li><a routerLink="" class="nav-link px-2 link-secondary">Inicio</a></li>
             <li><a routerLink="categorias" class="nav-link px-2 link-secondary">Categorías</a></li>
             
+            
+
             @if( islogged ){
+                @if(rol == "MODERADOR"){
+                    <li ><a routerLink="/gestion-negocio-moderador" class="nav-link px-2">Gestión negocios</a></li>
+                }@else {
                 <li ><a routerLink="/gestion-negocios" class="nav-link px-2">Gestión negocios</a></li>
                 <li ><a routerLink="/favoritos" class="nav-link px-2">Favoritos</a></li> 
-                <li ><a routerLink="/registro-negocio" class="nav-link px-2">Registra tu negocio</a></li> 
+                <li ><a routerLink="/registro-negocio" class="nav-link px-2">Registra tu negocio</a></li>
+                }
+
+                
             }
+
         </ul>
 
         <div class="col-md-3 text-end">
@@ -28,7 +37,7 @@
             }
             @else {
                 <div>
-                    <label class="me-3">Hola {{ email }}</label>
+                    <label class="me-3">Hola {{ nombre}}</label>
                     <button type="button" (click)="logout()" class="btn btn-primary">Logout</button>
                 </div>
             }

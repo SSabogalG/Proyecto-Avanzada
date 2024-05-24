@@ -1,4 +1,4 @@
-import { Horario } from "./horario";
+import { Horario } from "../horario";
 
 export class ActualizarNegocioDTO {
 

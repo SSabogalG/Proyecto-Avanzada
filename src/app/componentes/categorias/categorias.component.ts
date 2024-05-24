@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ItemNegocioDTO } from '../../DTO/item-negocio-dto';
+import { ItemNegocioDTO } from '../../DTO/Negocio/item-negocio-dto';
 import { PublicoService } from '../../servicios/publico.service';
 
 @Component({
@@ -12,20 +12,32 @@ import { PublicoService } from '../../servicios/publico.service';
 export class CategoriasComponent {
 
   listaNegocios: ItemNegocioDTO[]
+  categoriaSelecionada:string;
 
   constructor(private publicoService: PublicoService){
     this.listaNegocios = [];
+    this.categoriaSelecionada = "";
   }
 
-  public consultarNegocios(){
-this.publicoService.BuscarTipo().subscribe({
-  next:(data) => {
-    this.listaNegocios=data.respuesta;
-  },
-  error:(error) =>{
-    console.log("Error a mostrar los negocios")
-  }
-})
+
+
+public consultarNegocios(categoria? : string){
+
+  if(categoria){
+    this.publicoService.BuscarTipo(categoria).subscribe({
+      next:(data) => {
+        this.listaNegocios=data.respuesta;
+      },
+      error:(error) =>{
+        console.log("Error a mostrar los negocios")
+      }
+    });
   }
 
+  }
+
+  onSelectCategoria(categoria: string) {
+    this.categoriaSelecionada = categoria;
+    this.consultarNegocios(categoria); // Call the listarCategoria method with the selected category
+  }
 }

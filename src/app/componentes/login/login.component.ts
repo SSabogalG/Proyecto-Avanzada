@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common'; // Importar CommonModule
 import { AuthService } from '../../servicios/auth.service';
 import { TokenService } from '../../servicios/token.service';
@@ -11,7 +11,7 @@ import { LoginDTO } from '../../DTO/login-dto';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterOutlet, AlertaComponent],
+  imports: [CommonModule, FormsModule, RouterOutlet, AlertaComponent, RouterLink],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'] // Usa styleUrls en plural
 })

@@ -1,5 +1,5 @@
-import { Horario } from "./horario";
-import { Ubicacion} from "./ubicacion";
+import { Horario } from "../horario";
+import { Ubicacion} from "../ubicacion";
 
 export class RegistroNegocioDTO {
         constructor(

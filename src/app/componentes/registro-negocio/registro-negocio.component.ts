@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RegistroNegocioDTO } from '../../DTO/registro-negocio-dto';
+import { RegistroNegocioDTO } from '../../DTO/Negocio/registro-negocio-dto';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MapaService } from '../../servicios/mapa.service';
@@ -94,7 +94,7 @@ export class RegistroNegocioComponent implements OnInit {
         this.tipoNegocio = data.respuesta;
       },
       error: (error) => {
-        console.log("error al cargar las categorias");
+        console.log("error al cargar las categorias", error);
       }
     });
   }
@@ -105,7 +105,7 @@ export class RegistroNegocioComponent implements OnInit {
         this.ciudades=data.respuesta;
       },
       error:(error) =>{
-        console.log("error al cargar las ciudades");
+        console.log("error al cargar las ciudades", error);
       }
     });
   }

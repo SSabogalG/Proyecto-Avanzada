@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ItemNegocioDTO } from '../../DTO/item-negocio-dto';
+import { ItemNegocioDTO } from '../../DTO/Negocio/item-negocio-dto';
 import { NegociosService } from '../../servicios/negocios.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -23,7 +23,7 @@ export class GestionNegociosComponent {
   tituloModal: string = 'Título del modal';
   descripcionModal: string = 'Descripción del modal';
 
-  constructor(private usuarioService: UsuarioService, private tokenService: TokenService) {
+  constructor(private usuarioService: UsuarioService, private tokenService: TokenService, private negocioService:NegociosService) {
     this.negocios = [];
     this.listarNegocios();
     this.seleccionados = [];
@@ -69,15 +69,18 @@ export class GestionNegociosComponent {
 
   public borrarNegocios() {
 
-     this.alertaVisible = true;
+    this.seleccionados.forEach(n => {
 
+      this.negocioService.eliminar(n.id).subscribe({
+        next: (data) => {
+          this.negocios = data.respuesta;
+        },
+        error: (error) => {
+          console.error(error)
+        }
+      });
 
-   /* this.seleccionados.forEach(n => {
-      this.negociosService.eliminar(n.codigoNegocio);
-      this.negocios = this.negocios.filter(negocio => negocio.codigoNegocio !== n.codigoNegocio);
-    });
-    this.seleccionados = [];
-    this.actualizarMensaje();
-*/
+    })
+
   }
 }

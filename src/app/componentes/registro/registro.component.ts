@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { RegistroUsuarioDTO } from '../../DTO/registro-usuario-dto';
+import { RegistroUsuarioDTO } from '../../DTO/Usuario/registro-usuario-dto';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../servicios/auth.service';
 import { PublicoService } from '../../servicios/publico.service';

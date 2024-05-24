@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Ubicacion } from '../DTO/ubicacion';
 import { Observable } from 'rxjs';
 import { PositionOptions } from 'mapbox-gl';
-import { ItemNegocioDTO } from '../DTO/item-negocio-dto';
+import { ItemNegocioDTO } from '../DTO/Negocio/item-negocio-dto';
 
 declare var mapboxgl: any
 

@@ -13,14 +13,17 @@ import { CommonModule } from '@angular/common';
 export class HeaderComponent {
   title = "Unilocal";
   islogged = false;
-  email: string = "";
+  nombre: string = "";
+  rol: string = "";
 
   constructor(private tokenService: TokenService) { }
 
   ngOnInit(): void {
     this.islogged = this.tokenService.isLogged();
+    
     if (this.islogged) {
-      this.email = this.tokenService.getEmail();
+      this.nombre = this.tokenService.getNombre();
+      this.rol = this.tokenService.getRole();
     }
   }
 

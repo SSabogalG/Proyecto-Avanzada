@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { ItemNegocioDTO } from '../DTO/item-negocio-dto';
-import { RegistroNegocioDTO } from '../DTO/registro-negocio-dto';
+import { ItemNegocioDTO } from '../DTO/Negocio/item-negocio-dto';
+import { RegistroNegocioDTO } from '../DTO/Negocio/registro-negocio-dto';
 import { Ubicacion } from '../DTO/ubicacion';
 import { HttpClient } from '@angular/common/http';
 import { MensajeDTO } from '../DTO/mensaje-dto';
 import { Observable } from 'rxjs';
-import { ActualizarNegocioDTO } from '../DTO/actualizar-negocio-dto';
+import { ActualizarNegocioDTO } from '../DTO/Negocio/actualizar-negocio-dto';
 
 
 @Injectable({

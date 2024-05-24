@@ -12,6 +12,8 @@ import { CategoriasComponent } from './componentes/categorias/categorias.compone
 import { LoginGuard } from './guard/permiso.service';
 import { FavoritosComponent } from './componentes/favoritos/favoritos.component';
 import { RolesGuard } from './guard/roles.service';
+import { RecuperarComponent } from './componentes/recuperar/recuperar.component';
+import { GestionModeradorComponent } from './componentes/gestion-moderador/gestion-moderador.component';
 
 
 
@@ -34,5 +36,7 @@ export const routes: Routes = [
     {path: 'busqueda/:texto', component: BusquedaComponent},
     {path: "categorias", component:CategoriasComponent}, 
     {path: "favoritos", component: FavoritosComponent}, //cliente 
+    {path: "recuperar-contraseña", component:RecuperarComponent},
+    {path: "gestion-negocio-moderador", component: GestionModeradorComponent},
     {path: '', pathMatch: "full", redirectTo: ""}
 ];

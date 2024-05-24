@@ -64,11 +64,29 @@ export class TokenService {
     return "";
   }
 
+  public getCodigoNegocio():string {
+    const token = this.getToken();
+    if(token){
+      const values = this.decodePayload(token);
+      return values ? values.idNegocio : '';
+    }
+    return "";
+  }
+
   public getEmail(): string {
     const token = this.getToken();
     if (token) {
       const values = this.decodePayload(token);
       return values ? values.sub : '';
+    }
+    return "";
+  }
+
+  public getNombre(): string {
+    const token = this.getToken();
+    if(token){
+      const values = this.decodePayload(token);
+      return values ? values.nombre: '';
     }
     return "";
   }
@@ -84,6 +102,15 @@ export class TokenService {
 
   private isBrowser(): boolean {
     return typeof window !== 'undefined';
+  }
+
+  public getCategoria():string{
+    const token = this.getCategoria();
+    if(token){
+      const values = this.decodePayload(token);
+      return values ? values.getCategoria: '';
+    }
+    return "";
   }
 
 }
